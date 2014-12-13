@@ -15,6 +15,7 @@ import com.android.volley.toolbox.ImageLoader;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 
 /**
@@ -37,8 +38,8 @@ public class HomeActivity extends Activity {
     ImageView mImageView;
     @InjectView(R.id.friendlist)
     ListView mFriendlist;
-    @InjectView(R.id.option)
-    ImageButton mOption;
+    @InjectView(R.id.shareOnFacebook)
+    ImageButton mShareOnFacebook;
     @InjectView(R.id.imageButton)
     ImageButton mImageButton;
     private Intent intent;
@@ -80,7 +81,14 @@ public class HomeActivity extends Activity {
         return true;
     }
 
-    
+
+    @OnClick(R.id.shareOnFacebook)
+    public void shareOnFacebook(){
+    Intent intent = new Intent(HomeActivity.this,ShareActivity.class);
+        startActivity(intent);
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
