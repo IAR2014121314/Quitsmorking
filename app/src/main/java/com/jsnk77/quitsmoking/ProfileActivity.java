@@ -91,6 +91,7 @@ public class ProfileActivity extends Activity {
         Intent intent = new Intent();
 
         //noinspection SimplifiableIfStatement
+
         /*if (id == R.id.action_settings) {
             return true;
         } else*/ if (id == R.id.action_home) {
