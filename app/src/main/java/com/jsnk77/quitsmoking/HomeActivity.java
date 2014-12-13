@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -44,11 +45,16 @@ public class HomeActivity extends Activity {
         ButterKnife.inject(this);
 
 
+
+        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_LONG).show();
+
         intent = getIntent();
         fbId = intent.getStringExtra("fbId");
 
-        Intent i = new Intent(this, ShareActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(this,ShareActivity.class);
+//        startActivity(i);
+
+
 
 
     }
