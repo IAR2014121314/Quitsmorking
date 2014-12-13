@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".FriendListActivity"
 
-    android:clickable="true">
+    android:clickable="true"
+    android:background="#ff8c9ab5">
 
     <ImageView
         android:layout_width="50dp"

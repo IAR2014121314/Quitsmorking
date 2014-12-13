@@ -8,7 +8,8 @@
     android:id="@+id/action_home"
     tools:context=".HomeActivity"
     android:clickable="false"
-    android:transitionGroup="false">
+    android:transitionGroup="false"
+    android:background="#ff8c9ab5">
 
 
     <ImageView
