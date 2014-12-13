@@ -99,6 +99,7 @@ public class ProfileActivity extends Activity {
             intent.putExtra("GoalTabacco", goalTabacco);
             startActivity(intent);
             finish();
+//            あああ
             return true;
         } else if (id == R.id.action_profile) {
             //Toast.makeText(this, "profile selected", Toast.LENGTH_LONG).show();
