@@ -29,4 +29,5 @@ dependencies {
     compile files('libs/mobileservices-1.1.5.jar')
     compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.facebook.android:facebook-android-sdk:3.21.1'
+    compile 'com.mcxiaoke.volley:library:1.0.9'
 }
