@@ -105,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No Data"
-        android:id="@+id/textView"
+        android:id="@+id/message"
         android:layout_below="@+id/button"
         android:layout_alignParentStart="true"
         android:layout_marginTop="49dp"
@@ -117,9 +117,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/message"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/textView"
+        android:layout_alignEnd="@+id/message"
         android:height="50dp"
         android:gravity="center"/>
 </RelativeLayout>
