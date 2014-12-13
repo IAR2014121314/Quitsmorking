@@ -24,11 +24,7 @@ public class HomeActivity extends Activity {
         Intent i = new Intent(this,ShareActivity.class);
         startActivity(i);
 
-        Intent i = new Intent(this,RankingActivity.class);
-        startActivity(i);
 
-        Intent i = new Intent(this,ProfileActivity.class);
-        startActivity(i);
 
 
     }
