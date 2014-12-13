@@ -194,6 +194,9 @@ public class MainActivity extends Activity {
 
         intent = new Intent(this,HomeActivity.class);
         intent.putExtra("fbId", user.getId());
+        intent.putExtra("fbName",user.getName());
+        intent.putExtra("fbGender",(String)user.getProperty("gender"));
+        intent.putExtra("fbBirthday",user.getBirthday());
         startActivity(intent);
         finish();
 
