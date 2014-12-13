@@ -69,7 +69,6 @@ public class HomeActivity extends Activity {
     private int screenY;
     private int defLeft;
     private int defTop;
-    private int a;
 
     int incrementNum = 0;
 
@@ -82,7 +81,7 @@ public class HomeActivity extends Activity {
         ButterKnife.inject(this);
         ButterKnife.inject(this);
 
-        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_LONG).show();
 
 
         intent = getIntent();
@@ -106,8 +105,8 @@ public class HomeActivity extends Activity {
             e.printStackTrace();
         }
 
-        goalTabaccoFromProfile = getGoalTabacco();
-        getData();
+        intent = getIntent();
+        goalTabaccoFromProfile = intent.getIntExtra("GoalTabacco", 0);
 
 //        Intent i = new Intent(this,ShareActivity.class);
 //        startActivity(i);
@@ -196,6 +195,7 @@ public class HomeActivity extends Activity {
                     @Override
                     public void onTick(long millisUntilFinished) {
                     }
+
                     @Override
                     public void onFinish() {
                         mImageButtonTabacco.layout(defLeft, defTop, defLeft + mImageButtonTabacco.getWidth(), defTop + mImageButtonTabacco.getHeight());
@@ -214,7 +214,6 @@ public class HomeActivity extends Activity {
                     public void onCompleted(Tabacco entity, Exception exception, ServiceFilterResponse response) {
                         if (exception == null) {
                             // Insert succeeded
-                            incrementNum = 0;
                             Toast.makeText(HomeActivity.this, "Succeeded!", Toast.LENGTH_LONG).show();
                             getData();
                         } else {
@@ -230,6 +229,7 @@ public class HomeActivity extends Activity {
 
     public void getData() {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
+        MobileServiceTable<Profile> profile = mClient.getTable(Profile.class);
 
         tabacco.where().field("FbId").eq(fbId).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
@@ -243,7 +243,8 @@ public class HomeActivity extends Activity {
                 HomeActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mTotalcount.setText("総たばこ数 : " + Integer.toString(finalTotal) + " 本");
+
+                        mTotalcount.setText("今までに吸ったタバコの総本数 : " + Integer.toString(finalTotal) + " 本");
                     }
                 });
             }
@@ -265,28 +266,5 @@ public class HomeActivity extends Activity {
                 });
             }
         });
-    }
-
-    public int getGoalTabacco(){
-        MobileServiceTable<Profile> profile = mClient.getTable(Profile.class);
-
-        profile.where().field("FbId").eq(fbId).select("GoalTabacco").execute(new TableQueryCallback<Profile>() {
-            @Override
-            public void onCompleted(List<Profile> result, int count, Exception exception, ServiceFilterResponse response) {
-
-                for (Profile i : result) {
-                    a += i.GoalTabacco;
-                }
-
-                int  finalGoalTabacco = a;
-                HomeActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                });
-            }
-        });
-        return a;
     }
 }
