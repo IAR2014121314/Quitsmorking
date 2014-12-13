@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 
 
 
-    //    Facebook
+//    Facebook
     private UiLifecycleHelper uiHelper;
     private static final String TAG = "MainActivity";
     private Session.StatusCallback callback = new Session.StatusCallback() {
@@ -44,11 +44,11 @@ public class MainActivity extends Activity {
 
 
 
-    //    Azure
+//    Azure
     private MobileServiceClient mClient;
     private  User users = new User();
 
-    //    Intent処理
+//    Intent処理
     private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,27 +74,27 @@ public class MainActivity extends Activity {
 
     }
 
-    private void onSessionStateChange(Session session, SessionState state, Exception exception) {
-        if (state.isOpened()) {
+        private void onSessionStateChange(Session session, SessionState state, Exception exception) {
+            if (state.isOpened()) {
 
 
-            Log.i(TAG, "Logged in...");
-            // Request user data and show the results
-            Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
+                Log.i(TAG, "Logged in...");
+                // Request user data and show the results
+                Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
 
-                @Override
-                public void onCompleted(GraphUser user, Response response) {
-                    if(user != null) {
-                        buildUserInfoDisplay(user);
-                    }
-                }
-            });
+                    @Override
+                    public void onCompleted(GraphUser user, Response response) {
+                        if(user != null) {
+                         buildUserInfoDisplay(user);
+                         }
+                   }
+                });
+            }
+            else if (state.isClosed()) {
+                        Log.i(TAG, "Logged out...");
+
+                         }
         }
-        else if (state.isClosed()) {
-            Log.i(TAG, "Logged out...");
-
-        }
-    }
 
 
     @Override
@@ -203,33 +203,33 @@ public class MainActivity extends Activity {
     public void checkId(GraphUser user){
         MobileServiceTable<User> id  = mClient.getTable(User.class);
 
-        id.where().field("fbId").eq(user.getId()).execute(new TableQueryCallback<User>() {
-            @Override
-            public void onCompleted(List<User> result, int count, Exception exception, ServiceFilterResponse response) {
+       id.where().field("fbId").eq(user.getId()).execute(new TableQueryCallback<User>() {
+           @Override
+           public void onCompleted(List<User> result, int count, Exception exception, ServiceFilterResponse response) {
 
-                if(result.size() >  0 ){
-                    //Id has already registered.
-                    Toast.makeText(MainActivity.this, "今日も元気に禁煙しまよう", Toast.LENGTH_LONG).show();
+               if(result.size() >  0 ){
+                   //Id has already registered.
+                   Toast.makeText(MainActivity.this, "今日も元気に禁煙しまよう", Toast.LENGTH_LONG).show();
 
 
-                }else if(result.size() == 0){
-                    //Id needs to be inserted.
+               }else if(result.size() == 0){
+                   //Id needs to be inserted.
 
-                    mClient.getTable(User.class).insert(users, new TableOperationCallback<User>() {
-                        public void onCompleted(User entity, Exception exception, ServiceFilterResponse response) {
-                            if (exception == null) {
-                                // Insert succeeded
-                                Toast.makeText(MainActivity.this,"アカウントの新規作成が完了しました",Toast.LENGTH_LONG).show();
-                            }
-                            else {
-                                // Insert failed
-                            }
-                        }
-                    });
+                   mClient.getTable(User.class).insert(users, new TableOperationCallback<User>() {
+                       public void onCompleted(User entity, Exception exception, ServiceFilterResponse response) {
+                           if (exception == null) {
+                               // Insert succeeded
+                               Toast.makeText(MainActivity.this,"アカウントの新規作成が完了しました",Toast.LENGTH_LONG).show();
+                           }
+                           else {
+                               // Insert failed
+                           }
+                       }
+                   });
 
-                }
-            }
-        });
+               }
+           }
+       });
 
     }
 }
