@@ -48,6 +48,9 @@ public class ProfileActivity extends Activity {
     TextView mTextView2;
 
     private MobileServiceClient mClient;
+    Intent intent;
+    String fbidFromHome;
+    int goalTabacco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,9 @@ public class ProfileActivity extends Activity {
         } catch (Throwable e) {
             e.printStackTrace();
         }
+        intent = getIntent();
+        fbidFromHome = intent.getStringExtra("FbId");
+
         getData();
     }
 
@@ -90,9 +96,10 @@ public class ProfileActivity extends Activity {
         } else*/ if (id == R.id.action_home) {
             //Toast.makeText(this, "Main Page selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.HomeActivity");
-            //intent.putExtra();
+            intent.putExtra("GoalTabacco", goalTabacco);
             startActivity(intent);
             finish();
+//            あああ
             return true;
         } else if (id == R.id.action_profile) {
             //Toast.makeText(this, "profile selected", Toast.LENGTH_LONG).show();
@@ -122,7 +129,7 @@ public class ProfileActivity extends Activity {
         Profile profile = new Profile();
         profile.AverageTabacco = Integer.parseInt(mEditText.getText().toString());
         profile.GoalTabacco = Integer.parseInt(mEditText2.getText().toString());
-        profile.PeriodTabacco = Integer.parseInt(mEditText3.getText().toString());
+        profile.PeriodTabacco = goalTabacco = Integer.parseInt(mEditText3.getText().toString());
         mClient.getTable(Profile.class).insert(profile, new TableOperationCallback<Profile>() {
             public void onCompleted(Profile entity, Exception exception, ServiceFilterResponse response) {
                 if (exception == null) {
@@ -139,7 +146,7 @@ public class ProfileActivity extends Activity {
     public void getData() {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
 
-        tabacco.where().field("Text").eq("すばらしいアイテム").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().field("FbId").eq(fbidFromHome).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int total = 0;
