@@ -195,7 +195,6 @@ public class HomeActivity extends Activity {
                     @Override
                     public void onTick(long millisUntilFinished) {
                     }
-
                     @Override
                     public void onFinish() {
                         mImageButtonTabacco.layout(defLeft, defTop, defLeft + mImageButtonTabacco.getWidth(), defTop + mImageButtonTabacco.getHeight());
@@ -214,6 +213,7 @@ public class HomeActivity extends Activity {
                     public void onCompleted(Tabacco entity, Exception exception, ServiceFilterResponse response) {
                         if (exception == null) {
                             // Insert succeeded
+                            incrementNum = 0;
                             Toast.makeText(HomeActivity.this, "Succeeded!", Toast.LENGTH_LONG).show();
                             getData();
                         } else {
@@ -229,7 +229,6 @@ public class HomeActivity extends Activity {
 
     public void getData() {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
-        MobileServiceTable<Profile> profile = mClient.getTable(Profile.class);
 
         tabacco.where().field("FbId").eq(fbId).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
@@ -243,7 +242,6 @@ public class HomeActivity extends Activity {
                 HomeActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         mTotalcount.setText("今までに吸ったタバコの総本数 : " + Integer.toString(finalTotal) + " 本");
                     }
                 });
