@@ -42,7 +42,7 @@ public class ProfileActivity extends Activity {
     EditText mEditText3;
     @InjectView(R.id.button)
     Button mButton;
-    @InjectView(R.id.textView)
+    @InjectView(R.id.message)
     TextView mTextView;
     @InjectView(R.id.textView2)
     TextView mTextView2;

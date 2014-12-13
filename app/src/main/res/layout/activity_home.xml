@@ -19,7 +19,7 @@
         android:src="@android:color/holo_blue_light" />
 
     <TextView
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="User Name"
@@ -27,7 +27,8 @@
         android:layout_alignTop="@+id/usericon"
         android:layout_toEndOf="@+id/usericon"
         android:textSize="25dp"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
 
     <TextView
         android:layout_width="120dp"
@@ -53,13 +54,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Total Count"
         android:id="@+id/totalcount"
-        android:layout_below="@+id/Birthday"
-        android:layout_alignStart="@+id/Birthday"
-        android:layout_marginTop="5dp" />
+        android:layout_alignBottom="@+id/usericon"
+        android:layout_alignStart="@+id/Birthday" />
 
     <ImageView
         android:layout_width="230dp"
-        android:layout_height="340dp"
+        android:layout_height="300dp"
         android:id="@+id/imageView"
         android:layout_below="@+id/usericon"
         android:layout_alignParentStart="true"
