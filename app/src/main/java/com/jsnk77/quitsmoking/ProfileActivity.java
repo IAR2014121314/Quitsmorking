@@ -71,7 +71,6 @@ public class ProfileActivity extends Activity {
         }
         intent = getIntent();
         fbidFromHome = intent.getStringExtra("FbId");
-
         getData();
     }
 
