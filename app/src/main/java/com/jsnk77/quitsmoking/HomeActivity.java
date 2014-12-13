@@ -183,7 +183,7 @@ public class HomeActivity extends Activity {
                 int diffX = screenX - x;
                 int diffY = screenY - y;
                 targetLocalX -= diffX;
-                targetLocalY = diffY;
+                targetLocalY -= diffY;
                 mImageButtonTabacco.layout(targetLocalX, targetLocalY, targetLocalX + mImageButtonTabacco.getWidth(), targetLocalY + mImageButtonTabacco.getHeight());
                 screenX = x;
                 screenY = y;
