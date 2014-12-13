@@ -41,6 +41,7 @@ public class HomeActivity extends Activity {
     ImageButton mImageButton;
     private Intent intent;
     private String fbId;
+    private String fbName;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +54,14 @@ public class HomeActivity extends Activity {
 
         intent = getIntent();
         fbId = intent.getStringExtra("fbId");
+        fbName = intent.getStringExtra("fbName");
 
 
         ImageLoader imageLoader = ApplicationControler.getInstance().getImageLoader();
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(mUsericon, R.drawable.ic_launcher, R.drawable.ic_launcher);
         imageLoader.get("https://graph.facebook.com/"+fbId+"/picture",imageListener);
+
+        mUsername.setText(fbName);
 
 
 
