@@ -1,13 +1,17 @@
 package com.jsnk77.quitsmoking;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,11 +25,13 @@ import com.microsoft.windowsazure.mobileservices.ServiceFilterResponse;
 import com.microsoft.windowsazure.mobileservices.TableOperationCallback;
 import com.microsoft.windowsazure.mobileservices.TableQueryCallback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 import butterknife.OnTouch;
 
 
@@ -74,11 +80,11 @@ public class HomeActivity extends Activity {
 
     int goalTabaccoFromProfile;
 
+    ArrayList<FriendList> users;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        ButterKnife.inject(this);
-        ButterKnife.inject(this);
         ButterKnife.inject(this);
 
         Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_LONG).show();
@@ -110,6 +116,23 @@ public class HomeActivity extends Activity {
 
 //        Intent i = new Intent(this,ShareActivity.class);
 //        startActivity(i);
+
+        //ListView setup
+        users = new ArrayList<FriendList>();
+
+        User u1 = new User();
+
+        u1.friendname = "YUJI";
+        u1.cigarCount = "20";
+        users.add(u1);
+        User u2 = new User();
+        u2.name = "Haru";
+        u2.cigarCount = "21";
+        users.add(u2);
+
+        //set ListAdapter
+        FriendListAdapter testListAdapter = new FriendListAdapter(this, R.layout.activity_friendlistitem, users);
+        mFriendlist.setAdapter(testListAdapter);
 
     }
 
@@ -266,5 +289,62 @@ public class HomeActivity extends Activity {
                 });
             }
         });
+    }
+    //Friends list onclick event.
+    @OnItemClick(R.id.friendlist)
+    public void friendClick(int position) {
+        User user = (User) mFriendlist.getItemAtPosition(position);
+        Intent intent = new Intent(this, FriendActivity.class);
+        startActivity(intent);
+        Toast.makeText(this, user.name, Toast.LENGTH_SHORT).show();
+
+    }
+
+    public static class FriendListAdapter extends ArrayAdapter<User> {
+
+        Context mContext;
+        int mResource;
+
+        public FriendListAdapter(Context context, int resource, List<User> objects) {
+            super(context, resource, objects);
+            this.mContext = context;
+            this.mResource = resource;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView != null) {
+                holder = (ViewHolder) convertView.getTag();
+            } else {
+                convertView = LayoutInflater.from(mContext).inflate(mResource, parent, false);
+                holder = new ViewHolder(convertView);
+                convertView.setTag(holder);
+            }
+
+            User item = this.getItem(position);
+//            holder.mIcon.setImageDrawable(item.icon);
+            holder.mFriendName.setText(item.friend_name);
+            holder.mFriendTotalCount.setText(item.friend_tatal_count);
+
+            // etc...
+
+            return convertView;
+        }
+
+        static class ViewHolder {
+            @InjectView(R.id.friend_image)
+            ImageView mFriendImage;
+            @InjectView(R.id.friend_birthday)
+            TextView mFriendBirthday;
+            @InjectView(R.id.friend_name)
+            TextView mFriendName;
+            @InjectView(R.id.friend_total_count)
+            TextView mFriendTotalCount;
+
+            ViewHolder(View view) {
+                ButterKnife.inject(this, view);
+            }
+        }
     }
 }
