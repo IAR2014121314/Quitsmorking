@@ -63,7 +63,7 @@
 
     <ImageView
         android:layout_width="230dp"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:id="@+id/imageView"
         android:layout_below="@+id/usericon"
         android:layout_alignParentStart="true"
@@ -102,5 +102,23 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp" />
+
+    <ImageButton
+        android:layout_width="20dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageButtonTabacco"
+        android:background="#00FFFFFF"
+        android:src="@drawable/cigar1"
+        android:layout_alignEnd="@+id/usericon"
+        android:layout_below="@+id/imageView" />
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="/ 本"
+        android:id="@+id/tabaccoToday"
+        android:layout_above="@+id/imageButton"
+        android:gravity="center"
+        android:layout_alignEnd="@+id/shareOnFacebook" />
 
 </RelativeLayout>
