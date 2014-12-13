@@ -82,7 +82,7 @@ public class HomeActivity extends Activity {
         ButterKnife.inject(this);
         ButterKnife.inject(this);
 
-        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_LONG).show();
+        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_SHORT).show();
 
 
         intent = getIntent();
@@ -107,6 +107,7 @@ public class HomeActivity extends Activity {
         }
 
         goalTabaccoFromProfile = getGoalTabacco();
+        getData();
 
 //        Intent i = new Intent(this,ShareActivity.class);
 //        startActivity(i);
@@ -268,7 +269,6 @@ public class HomeActivity extends Activity {
 
     public int getGoalTabacco(){
         MobileServiceTable<Profile> profile = mClient.getTable(Profile.class);
-
 
         profile.where().field("FbId").eq(fbId).select("GoalTabacco").execute(new TableQueryCallback<Profile>() {
             @Override
