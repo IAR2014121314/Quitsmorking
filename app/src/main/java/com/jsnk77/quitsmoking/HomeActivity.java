@@ -236,12 +236,14 @@ public class HomeActivity extends Activity {
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int total = 0;
                 for (Tabacco i : result) {
+
                     total += i.SmokeCount;
                 }
                 final int finalTotal = total;
                 HomeActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
                         mTotalcount.setText("今までに吸ったタバコの総本数 : " + Integer.toString(finalTotal) + " 本");
                     }
                 });
