@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShareActivity">
+    tools:context=".ShareActivity"
+    android:background="#ff8c9ab5">
 
 </LinearLayout>
