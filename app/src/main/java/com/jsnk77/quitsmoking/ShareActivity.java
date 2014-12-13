@@ -14,23 +14,29 @@ import com.facebook.widget.FacebookDialog;
 public class ShareActivity extends Activity {
 
     private UiLifecycleHelper uiHelper;
-
+    private String Name="禁煙アバター";
+    private String Caption;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
 
-//        今日の本数とアバターをFacebookに投稿します
+//      ◯◯から禁煙をはじめて、合計◯本吸ってて今日は◯本でした！ みんなも一緒に禁煙しよう！ 今日の本数とアバターをFacebookに投稿します
 
 
         uiHelper = new UiLifecycleHelper(this, null);
         uiHelper.onCreate(savedInstanceState);
 
+        putCaption();
+
         FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
-                .setLink("https://developers.facebook.com/android")
-                .build();
+                .setLink("https://developers.facebook.com/android").setName(Name).setCaption(Caption) .build();
         uiHelper.trackPendingDialogCall(shareDialog.present());
 
+    }
+
+    private void putCaption() {
+        Caption = ""+"から禁煙をはじめました！¥n今日は"+""+"本吸いました";
     }
 
     @Override

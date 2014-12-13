@@ -5,7 +5,10 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    tools:context=".HomeActivity" >
+    android:id="@+id/action_home"
+    tools:context=".HomeActivity"
+    android:clickable="false"
+    android:transitionGroup="false">
 
 
     <ImageView
@@ -14,7 +17,7 @@
         android:id="@+id/usericon"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
         android:src="@android:color/holo_blue_light" />
 
@@ -63,7 +66,7 @@
         android:id="@+id/imageView"
         android:layout_below="@+id/usericon"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:src="@android:color/holo_green_light"
         android:layout_alignEnd="@+id/totalcount"
         android:layout_marginLeft="10dp" />

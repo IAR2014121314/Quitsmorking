@@ -1,10 +1,15 @@
 package com.jsnk77.quitsmoking;
 
+import android.app.Activity;
+import android.os.Bundle;
+
 /**
- * Created by jsnk77 on 14/12/13.
+ * Created by yuki on 2014/12/13.
  */
-public class Message {
-    public String FromFbId;
-    public String ToFbId;
-    public String Message;
+public class Message extends Activity {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_message);
+
+    }
 }
