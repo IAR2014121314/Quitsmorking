@@ -99,7 +99,6 @@ public class ProfileActivity extends Activity {
             intent.putExtra("GoalTabacco", goalTabacco);
             startActivity(intent);
             finish();
-//            あああ
             return true;
         } else if (id == R.id.action_profile) {
             //Toast.makeText(this, "profile selected", Toast.LENGTH_LONG).show();
@@ -157,7 +156,7 @@ public class ProfileActivity extends Activity {
                 ProfileActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mTextView.setText("Total Steps : " + Integer.toString(finalTotal) + " 歩\n" + "Total Cost : " + (finalTotal * 21) + "円");
+                        mTextView.setText("今までに吸ったタバコの総本数 : " + Integer.toString(finalTotal) + " 本\n" + "タバコに使った総額 : " + (finalTotal * 21) + "円");
                     }
                 });
             }
@@ -174,7 +173,7 @@ public class ProfileActivity extends Activity {
                 ProfileActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mTextView2.setText("今日の歩数 : " + Integer.toString(finalTotal) + " 歩");
+                        mTextView2.setText("今日のタバコの本数 : " + Integer.toString(finalTotal) + " 本");
                     }
                 });
             }
