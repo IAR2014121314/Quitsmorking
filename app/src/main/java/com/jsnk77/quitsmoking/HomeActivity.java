@@ -69,6 +69,7 @@ public class HomeActivity extends Activity {
     private int screenY;
     private int defLeft;
     private int defTop;
+    private int a;
 
     int incrementNum = 0;
 
@@ -105,8 +106,7 @@ public class HomeActivity extends Activity {
             e.printStackTrace();
         }
 
-        intent = getIntent();
-        goalTabaccoFromProfile = intent.getIntExtra("GoalTabacco", 0);
+        goalTabaccoFromProfile = getGoalTabacco();
 
 //        Intent i = new Intent(this,ShareActivity.class);
 //        startActivity(i);
@@ -242,7 +242,7 @@ public class HomeActivity extends Activity {
                 HomeActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mTotalcount.setText("今までに吸ったタバコの総本数 : " + Integer.toString(finalTotal) + " 本");
+                        mTotalcount.setText("総たばこ数 : " + Integer.toString(finalTotal) + " 本");
                     }
                 });
             }
@@ -264,5 +264,29 @@ public class HomeActivity extends Activity {
                 });
             }
         });
+    }
+
+    public int getGoalTabacco(){
+        MobileServiceTable<Profile> profile = mClient.getTable(Profile.class);
+
+
+        profile.where().field("FbId").eq(fbId).select("GoalTabacco").execute(new TableQueryCallback<Profile>() {
+            @Override
+            public void onCompleted(List<Profile> result, int count, Exception exception, ServiceFilterResponse response) {
+
+                for (Profile i : result) {
+                    a += i.GoalTabacco;
+                }
+
+                int  finalGoalTabacco = a;
+                HomeActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+            }
+        });
+        return a;
     }
 }

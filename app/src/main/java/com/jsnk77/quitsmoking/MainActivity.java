@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 
         LoginButton authButton = (LoginButton)findViewById(R.id.authButton);
 
-        authButton.setReadPermissions(Arrays.asList("user_location", "user_likes", "public_profile"));
+        authButton.setReadPermissions(Arrays.asList("read_friendlists", "user_likes", "public_profile"));
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
 
@@ -191,11 +191,12 @@ public class MainActivity extends Activity {
 
 
         checkId(user);
+        CheckFriendsId(user);
 
         intent = new Intent(this,HomeActivity.class);
         intent.putExtra("fbId", user.getId());
         intent.putExtra("fbName",user.getName());
-        intent.putExtra("fbGender",(String)user.getProperty("gender"));
+        intent.putExtra("fbGender", (String) user.getProperty("gender"));
         intent.putExtra("fbBirthday",user.getBirthday());
         startActivity(intent);
         finish();
@@ -203,7 +204,9 @@ public class MainActivity extends Activity {
 
     }
 
-    public void checkId(GraphUser user){
+
+
+    public void checkId(final GraphUser user){
         MobileServiceTable<User> id  = mClient.getTable(User.class);
 
        id.where().field("fbId").eq(user.getId()).execute(new TableQueryCallback<User>() {
@@ -212,7 +215,7 @@ public class MainActivity extends Activity {
 
                if(result.size() >  0 ){
                    //Id has already registered.
-                   Toast.makeText(MainActivity.this, "今日も元気に禁煙しまよう", Toast.LENGTH_LONG).show();
+                   Toast.makeText(MainActivity.this, "こんにちは"+user.getName()+"さん禁煙は捗っていますか？", Toast.LENGTH_LONG).show();
 
 
                }else if(result.size() == 0){
@@ -222,7 +225,7 @@ public class MainActivity extends Activity {
                        public void onCompleted(User entity, Exception exception, ServiceFilterResponse response) {
                            if (exception == null) {
                                // Insert succeeded
-                               Toast.makeText(MainActivity.this,"アカウントの新規作成が完了しました",Toast.LENGTH_LONG).show();
+                               Toast.makeText(MainActivity.this,"アカウントの新規作成が完了しました¥nこれから禁煙頑張りましょう！",Toast.LENGTH_LONG).show();
                            }
                            else {
                                // Insert failed
@@ -233,6 +236,10 @@ public class MainActivity extends Activity {
                }
            }
        });
+
+    }
+
+    private void CheckFriendsId(GraphUser user) {
 
     }
 }

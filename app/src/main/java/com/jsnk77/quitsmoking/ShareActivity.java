@@ -32,11 +32,11 @@ public class ShareActivity extends Activity {
         FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
                 .setLink("https://developers.facebook.com/android").setName(Name).setCaption(Caption) .build();
         uiHelper.trackPendingDialogCall(shareDialog.present());
-
+        finish();
     }
 
     private void putCaption() {
-        Caption = ""+"から禁煙をはじめました！¥n今日は"+""+"本吸いました";
+        Caption = ""+"から禁煙をはじめました！今日は"+""+"本吸いました";
     }
 
     @Override
