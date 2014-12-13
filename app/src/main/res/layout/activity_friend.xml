@@ -38,8 +38,7 @@
         android:textSize="30dp"
         android:layout_gravity="right|center_vertical"
         android:layout_below="@+id/friend_image"
-        android:layout_toStartOf="@+id/friend_total_count"
-        android:layout_marginTop="8dp" />
+        android:layout_centerHorizontal="true" />
 
     <!--<Button
         android:layout_width="wrap_content"
@@ -72,9 +71,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Total Count"
         android:id="@+id/friend_total_count"
-        android:layout_marginTop="56dp"
-        android:layout_below="@+id/friend_name"
-        android:layout_alignEnd="@+id/friend_image" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,5 +81,5 @@
         android:text="Gender"
         android:id="@+id/friend_gender"
         android:layout_alignTop="@+id/friend_birthday"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/friend_total_count" />
 </RelativeLayout>
