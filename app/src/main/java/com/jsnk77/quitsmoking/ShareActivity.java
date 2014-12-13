@@ -13,6 +13,8 @@ public class ShareActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
 
+//        今日の本数とアバターをFacebookに投稿します
+
 
 
     }

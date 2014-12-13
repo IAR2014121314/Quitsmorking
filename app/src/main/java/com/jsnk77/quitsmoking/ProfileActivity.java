@@ -89,26 +89,26 @@ public class ProfileActivity extends Activity {
             return true;
         } else*/ if (id == R.id.action_home) {
             //Toast.makeText(this, "Main Page selected", Toast.LENGTH_LONG).show();
-            intent.setClassName("com.jsnk77.quitsmokin", "com.jsnk77.quitsmokin.HomeActivity");
+            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.HomeActivity");
             //intent.putExtra();
             startActivity(intent);
             finish();
             return true;
         } else if (id == R.id.action_profile) {
             //Toast.makeText(this, "profile selected", Toast.LENGTH_LONG).show();
-            intent.setClassName("com.jsnk77.quitsmokin", "com.jsnk77.quitsmokin.ProfileActivity");
+            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.ProfileActivity");
             startActivity(intent);
             finish();
             return true;
         } else if (id == R.id.action_friend) {
             //Toast.makeText(this, "ranking selected", Toast.LENGTH_LONG).show();
-            intent.setClassName("com.jsnk77.quitsmokin", "com.jsnk77.quitsmokin.FriendActivity");
+            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.FriendActivity");
             startActivity(intent);
             finish();
             return true;
         } else if (id == R.id.action_message) {
             //Toast.makeText(this, "facebook selected", Toast.LENGTH_LONG).show();
-            intent.setClassName("com.jsnk77.quitsmokin", "com.jsnk77.quitsmokin.MessageActivity");
+            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.MessageActivity");
             startActivity(intent);
             finish();
             return true;
