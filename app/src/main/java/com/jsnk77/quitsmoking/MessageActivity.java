@@ -31,6 +31,9 @@ public class MessageActivity extends ActionBarActivity {
     ListView mListView;
     ArrayList<MessageListItem> users;
     Intent intent;
+    private String fbId;
+    private String fbName;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,8 @@ public class MessageActivity extends ActionBarActivity {
 
 
         intent = getIntent();
-        String fbId = "567407373393965";
+        fbId = intent.getStringExtra("fbId");
+        fbName = intent.getStringExtra("fbName");
 
         //ListView setup
         users = new ArrayList<MessageListItem>();
@@ -104,18 +108,24 @@ public class MessageActivity extends ActionBarActivity {
             //Toast.makeText(this, "Main Page selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.HomeActivity");
             //intent.putExtra("Goal", "");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
             finish();
             return true;
         } else if (id == R.id.action_profile) {
             //Toast.makeText(this, "profile selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.ProfileActivity");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
             finish();
             return true;
         } else if (id == R.id.action_message) {
             //Toast.makeText(this, "facebook selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.MessageActivity");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
             finish();
             return true;

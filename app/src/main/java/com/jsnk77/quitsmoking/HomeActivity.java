@@ -92,9 +92,9 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.inject(this);
-        ButterKnife.inject(this);
 
-        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_SHORT).show();
+
+
 
 
         intent = getIntent();
@@ -152,7 +152,7 @@ public class HomeActivity extends ActionBarActivity {
         this.getData();
 
         int a = 4;
-        if (totaltodayhosisu < a) {
+        if (totaltodayhosisu >  a) {
             mImageView.setVisibility(View.VISIBLE);
             mImageView3.setVisibility(View.INVISIBLE);
         } else {
@@ -193,13 +193,17 @@ public class HomeActivity extends ActionBarActivity {
             //Toast.makeText(this, "Main Page selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.HomeActivity");
             //intent.putExtra("Goal", "");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
             finish();
+
             return true;
         } else if (id == R.id.action_profile) {
             //Toast.makeText(this, "profile selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.ProfileActivity");
             intent.putExtra("FbId", fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
             finish();
             return true;
@@ -212,6 +216,8 @@ public class HomeActivity extends ActionBarActivity {
         } else if (id == R.id.action_message) {
             //Toast.makeText(this, "facebook selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.MessageActivity");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
             finish();
             return true;

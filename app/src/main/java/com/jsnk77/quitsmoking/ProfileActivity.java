@@ -52,6 +52,8 @@ public class ProfileActivity extends ActionBarActivity {
     String fbidFromHome;
     int goalTabacco;
     String nameToHome;
+    private String fbId;
+    private String fbName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,8 @@ public class ProfileActivity extends ActionBarActivity {
         }
         intent = getIntent();
         fbidFromHome = intent.getStringExtra("FbId");
+       fbId = intent.getStringExtra("fbId");
+       fbName = intent.getStringExtra("fbName");
         getData();
     }
 
@@ -99,13 +103,18 @@ public class ProfileActivity extends ActionBarActivity {
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.HomeActivity");
             intent.putExtra("fbName", nameToHome);
             intent.putExtra("GoalTabacco", goalTabacco);
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
             finish();
             return true;
         } else if (id == R.id.action_profile) {
             //Toast.makeText(this, "profile selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.ProfileActivity");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
+
             finish();
             return true;
 //        } else if (id == R.id.action_friend) {
@@ -117,6 +126,8 @@ public class ProfileActivity extends ActionBarActivity {
         } else if (id == R.id.action_message) {
             //Toast.makeText(this, "facebook selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.MessageActivity");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
             startActivity(intent);
             finish();
             return true;
