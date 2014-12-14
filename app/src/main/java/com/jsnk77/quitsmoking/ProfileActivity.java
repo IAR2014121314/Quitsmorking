@@ -166,7 +166,7 @@ public class ProfileActivity extends ActionBarActivity {
             }
         });
 
-        tabacco.where().day("DateToday").eq("2014-12-14").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().field("DateToday").eq("2014-12-14").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int totalToday = 0;
