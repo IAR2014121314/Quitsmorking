@@ -88,7 +88,7 @@ public class HomeActivity extends ActionBarActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.inject(this);
 
-        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_LONG).show();
+        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_SHORT).show();
 
 
         intent = getIntent();
@@ -246,11 +246,11 @@ public class HomeActivity extends ActionBarActivity {
                     public void onCompleted(Tabacco entity, Exception exception, ServiceFilterResponse response) {
                         if (exception == null) {
                             // Insert succeeded
-                            Toast.makeText(HomeActivity.this, "Succeeded!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(HomeActivity.this, "たばこを1本吸ってしまいました…", Toast.LENGTH_SHORT).show();
                             getData();
                         } else {
                             // Insert failed
-                            Toast.makeText(HomeActivity.this, "Failed!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(HomeActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
