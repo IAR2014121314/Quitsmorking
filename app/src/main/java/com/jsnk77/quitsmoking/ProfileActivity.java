@@ -51,6 +51,7 @@ public class ProfileActivity extends ActionBarActivity {
     Intent intent;
     String fbidFromHome;
     int goalTabacco;
+    String nameToHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +97,7 @@ public class ProfileActivity extends ActionBarActivity {
         } else*/ if (id == R.id.action_home) {
             //Toast.makeText(this, "Main Page selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.HomeActivity");
-            intent.putExtra("FbId", fbidFromHome);
+            intent.putExtra("Name", nameToHome);
             intent.putExtra("GoalTabacco", goalTabacco);
             startActivity(intent);
             finish();
@@ -146,6 +147,7 @@ public class ProfileActivity extends ActionBarActivity {
 
     public void getData() {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
+        MobileServiceTable<User> user = mClient.getTable(User.class);
 
         tabacco.where().field("FbId").eq(fbidFromHome).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
@@ -176,6 +178,23 @@ public class ProfileActivity extends ActionBarActivity {
                     @Override
                     public void run() {
                         mTextView2.setText("今日のタバコの本数 : " + Integer.toString(finalTotal) + " 本");
+                    }
+                });
+            }
+        });
+
+        user.where().field("FbId").eq(fbidFromHome).select("name").execute(new TableQueryCallback<User>() {
+            @Override
+            public void onCompleted(List<User> result, int count, Exception exception, ServiceFilterResponse response) {
+                String name = "";
+                for (User i : result) {
+                    name = i.name;
+                }
+                final String finalName = name;
+                ProfileActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        nameToHome = finalName;
                     }
                 });
             }
