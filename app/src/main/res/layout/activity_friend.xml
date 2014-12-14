@@ -12,25 +12,14 @@
 
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="340dp"
+        android:layout_width="220dp"
+        android:layout_height="300dp"
         android:id="@+id/friend_image"
-        android:src="@drawable/ic_launcher"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentStart="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Birthday"
-        android:id="@+id/friend_birthday"
-        android:layout_gravity="right|bottom"
-        android:layout_below="@+id/friend_name"
-        android:layout_alignStart="@+id/friend_name"
-        android:layout_marginTop="10dp" />
+        android:src="@android:color/holo_green_dark"
+        android:layout_marginLeft="5dp"
+        android:layout_above="@+id/m1_button"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:layout_width="227dp"
@@ -40,10 +29,13 @@
         android:id="@+id/friend_name"
         android:textSize="30dp"
         android:layout_gravity="right|center_vertical"
-        android:layout_below="@+id/friend_image"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/friend_image"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="38dp"
+        android:layout_alignStart="@+id/m2_button"
+        android:layout_marginLeft="5dp" />
 
-    <!--<Button
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="いいね"
@@ -66,7 +58,7 @@
         android:id="@+id/m3_button"
         android:singleLine="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />-->
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,15 +66,25 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Total Count"
         android:id="@+id/friend_total_count"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/friend_day_count"
+        android:layout_alignStart="@+id/m3_button"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Gender"
-        android:id="@+id/friend_gender"
-        android:layout_alignTop="@+id/friend_birthday"
-        android:layout_alignEnd="@+id/friend_name" />
+        android:text="Day Count"
+        android:id="@+id/friend_day_count"
+        android:layout_marginLeft="10dp"
+        android:layout_alignTop="@+id/friend_image"
+        android:layout_alignStart="@+id/m3_button" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView2"
+        android:layout_above="@+id/friend_image"
+        android:layout_alignStart="@+id/friend_image"
+        android:layout_marginBottom="10dp" />
 </RelativeLayout>

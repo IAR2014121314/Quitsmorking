@@ -13,16 +13,17 @@
         android:text="Friend Messages"
         android:id="@+id/message"
         android:textSize="25dp"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/friendname"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/friend_icon"
-        android:layout_marginStart="32dp"
-        android:layout_alignTop="@+id/message"
-        android:layout_alignParentStart="true"
-        android:src="@android:color/holo_orange_dark" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Friend name"
+        android:id="@+id/friendname"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
 </RelativeLayout>
