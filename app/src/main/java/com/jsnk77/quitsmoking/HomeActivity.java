@@ -134,30 +134,31 @@ public class HomeActivity extends ActionBarActivity {
 
         FriendList u1 = new FriendList();
         u1.friendListName = "YUJI";
-        u1.total_count = "20";
+        u1.total_count = "Toatal = 20";
         users.add(u1);
 
         FriendList u2 = new FriendList();
         u2.friendListName = "Haru";
-        u2.total_count = "21";
+        u2.total_count = "Total = 21";
         users.add(u2);
 
         //set ListAdapter
-        FriendListAdapter FriendListAdapter = new FriendListAdapter(this, R.layout.activity_friendlistitem, users);
-        mFriendlist.setAdapter(FriendListAdapter);
+        FriendListAdapter friendlistadapter = new FriendListAdapter(this, R.layout.activity_friendlistitem, users);
+        mFriendlist.setAdapter(friendlistadapter);
 
         calendar = Calendar.getInstance();
         today = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
 
         this.getData();
 
-        int a = 4;
-        if (totaltodayhosisu >  a) {
+        int a = 14;
+        if (totaltodayhosisu >  a){
             mImageView.setVisibility(View.VISIBLE);
             mImageView3.setVisibility(View.INVISIBLE);
-        } else {
-            mImageView3.setVisibility(View.VISIBLE);
+        } else if(totaltodayhosisu < a){
             mImageView.setVisibility(View.INVISIBLE);
+            mImageView3.setVisibility(View.VISIBLE);
+
         }
 
     }
