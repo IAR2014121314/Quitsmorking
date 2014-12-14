@@ -215,7 +215,7 @@ public class MainActivity extends Activity {
 
                if(result.size() >  0 ){
                    //Id has already registered.
-                   Toast.makeText(MainActivity.this, "こんにちは"+user.getName()+"さん禁煙は捗っていますか？", Toast.LENGTH_LONG).show();
+                   Toast.makeText(MainActivity.this, "こんにちは"+user.getName()+"さん禁煙は捗っていますか？", Toast.LENGTH_SHORT).show();
 
 
                }else if(result.size() == 0){
@@ -225,7 +225,7 @@ public class MainActivity extends Activity {
                        public void onCompleted(User entity, Exception exception, ServiceFilterResponse response) {
                            if (exception == null) {
                                // Insert succeeded
-                               Toast.makeText(MainActivity.this,"アカウントの新規作成が完了しました¥nこれから禁煙頑張りましょう！",Toast.LENGTH_LONG).show();
+                               Toast.makeText(MainActivity.this,"アカウントの新規作成が完了しました¥nこれから禁煙頑張りましょう！",Toast.LENGTH_SHORT ).show();
                            }
                            else {
                                // Insert failed
