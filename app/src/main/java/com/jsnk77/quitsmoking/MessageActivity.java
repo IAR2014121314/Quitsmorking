@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -144,19 +143,12 @@ public class MessageActivity extends ActionBarActivity {
 
             return convertView;
         }
-        public String id;
-        public String FromFbId;
-        public String ToFbId;
-        public String Message;
-        public String fromfriendname;
-        public boolean read;
+
 
         static class ViewHolder {
-            @InjectView(R.id.friendicon)
-            ImageView mFriendIcon;
             @InjectView(R.id.friendname)
             TextView mFriendName;
-            @InjectView(R.id.friendTotalCount)
+            @InjectView(R.id.message)
             TextView mMessage;
 
             ViewHolder(View view) {
