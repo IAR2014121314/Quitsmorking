@@ -73,8 +73,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:src="@android:drawable/ic_menu_manage"
-        android:background="#fffdffff" />
+        android:src="@drawable/com_facebook_button_like_icon" />
 
     <ImageButton
         android:layout_width="wrap_content"
