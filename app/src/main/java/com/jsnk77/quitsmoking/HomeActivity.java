@@ -275,12 +275,11 @@ public class HomeActivity extends ActionBarActivity {
     public void getData() {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
 
-        tabacco.where().field("FbId").eq("fbId").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().field("FbId").eq(fbId).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int total = 0;
                 for (Tabacco i : result) {
-
                     total += i.SmokeCount;
                 }
                 final int finalTotal = total;
@@ -293,7 +292,7 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
 
-        tabacco.where().field("DateToday").eq("today").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().field("DateToday").eq(today).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int totalToday = 0;
