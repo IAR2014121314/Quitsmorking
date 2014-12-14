@@ -126,12 +126,12 @@ public class HomeActivity extends ActionBarActivity {
         users = new ArrayList<FriendList>();
 
         FriendList u1 = new FriendList();
-        u1.name = "YUJI";
+        u1.friendListName = "YUJI";
         u1.total_count = "20";
         users.add(u1);
 
         FriendList u2 = new FriendList();
-        u2.name = "Haru";
+        u2.friendListName = "Haru";
         u2.total_count = "21";
         users.add(u2);
 
