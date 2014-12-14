@@ -46,10 +46,7 @@ public class HomeActivity extends Activity {
     ImageView mUsericon;
     @InjectView(R.id.username)
     TextView mUsername;
-    @InjectView(R.id.Birthday)
-    TextView mBirthday;
-    @InjectView(R.id.gender)
-    TextView mGender;
+
     @InjectView(R.id.totalcount)
     TextView mTotalcount;
     @InjectView(R.id.imageView)
@@ -335,8 +332,7 @@ public class HomeActivity extends Activity {
         static class ViewHolder {
             @InjectView(R.id.friend_image)
             ImageView mFriendImage;
-            @InjectView(R.id.friend_birthday)
-            TextView mFriendBirthday;
+
             @InjectView(R.id.friend_name)
             TextView mFriendName;
             @InjectView(R.id.friend_total_count)

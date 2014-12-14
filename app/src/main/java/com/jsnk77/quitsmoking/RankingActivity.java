@@ -12,6 +12,10 @@ public class RankingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        HomeActivityから今週のタバコ本数を受け取ってくる
+//      　友達リストの数と比較する
+
+//
 
 
 
