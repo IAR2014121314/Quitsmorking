@@ -41,6 +41,7 @@ public class MessageActivity extends ActionBarActivity {
         //ListView setup
         users = new ArrayList<MessageListItem>();
         String s = " さんからメッセージデス";
+
         MessageListItem u1 = new MessageListItem();
         u1.fromfriendname = ("とーま"+ s );
         u1.Message = "いいね！";

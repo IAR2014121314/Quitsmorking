@@ -13,22 +13,20 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/friendicon"
-        android:layout_gravity="center_horizontal"
-        android:src="@android:color/holo_orange_light" />
+        android:src="@android:color/holo_orange_light"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Friend Name"
-        android:id="@+id/friendname"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/friendname" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/friendTotalCount"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/friendTotalCount" />
 
 </LinearLayout>

@@ -58,10 +58,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/friendlist"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_alignTop="@+id/imageView"
         android:layout_marginLeft="10dp"
-        android:layout_alignBottom="@+id/imageView" />
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_above="@+id/imageButton5" />
 
     <ImageButton
         android:layout_width="50dp"

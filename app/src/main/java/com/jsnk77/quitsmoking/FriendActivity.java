@@ -51,32 +51,7 @@ public class FriendActivity extends Activity {
         mFriendTotalCount.setText("xx");
         mFriendDayCount.setText("xx");
 
-        try {
-            mClient = new MobileServiceClient(
-                    "https://fb-messages.azure-mobile.net/",
-                    "CQNkIViRgIWYSsFTsGcUMpcLedvvyB33",
-                    this
-            );
-            MessageListItem message = new MessageListItem();
-            message.id = "8C9F690D-6418-4838-A80B-23FF4EC29A57";
-            message.FromFbId = "aaja88wq0liavao8sehhava";
-            message.ToFbId = "ajoaehnvlia;ndocana";
-            message.read= false;
-            message.Message = "最低！ ";
-            mClient.getTable(MessageListItem.class).insert(message, new TableOperationCallback<MessageListItem>() {
-                public void onCompleted(MessageListItem entity, Exception exception, ServiceFilterResponse response) {
-                    if (exception == null) {
-                        // Insert succeeded
-                    } else {
-                        // Insert failed
-                    }
-                }
-            });
 
-        } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
     //いいね
