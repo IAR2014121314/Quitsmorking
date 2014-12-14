@@ -74,11 +74,9 @@ public class HomeActivity extends ActionBarActivity {
     private int defLeft;
     private int defTop;
 
-    int incrementNum = 0;
-
-    private Intent intentFromProfile;
-    //private String fbIdFromProfile;
     private int goalTabaccoFromProfile;
+
+    int incrementNum = 0;
 
     ArrayList<FriendList> users;
 
@@ -96,7 +94,7 @@ public class HomeActivity extends ActionBarActivity {
         fbName = intent.getStringExtra("fbName");
         goalTabaccoFromProfile = intent.getIntExtra("GoalTabacco", 0);
 
-
+        fbId = "567407373393965";
 
         ImageLoader imageLoader = ApplicationControler.getInstance().getImageLoader();
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(mUsericon, R.drawable.ic_launcher, R.drawable.ic_launcher);

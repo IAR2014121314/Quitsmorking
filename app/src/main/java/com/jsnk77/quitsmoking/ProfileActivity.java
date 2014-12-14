@@ -141,6 +141,7 @@ public class ProfileActivity extends ActionBarActivity {
                 }
             }
         });
+        goalTabacco = Integer.parseInt(mEditText3.getText().toString());
     }
 
     public void getData() {
