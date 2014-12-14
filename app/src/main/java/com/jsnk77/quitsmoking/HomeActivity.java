@@ -1,10 +1,10 @@
 package com.jsnk77.quitsmoking;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +38,7 @@ import butterknife.OnTouch;
 /**
  * Created by jsnk77 on 14/12/13.
  */
-public class HomeActivity extends Activity {
+public class HomeActivity extends ActionBarActivity {
 
 
     private MobileServiceClient mClient;
@@ -138,6 +138,8 @@ public class HomeActivity extends Activity {
         //set ListAdapter
         FriendListAdapter FriendListAdapter = new FriendListAdapter(this, R.layout.activity_friendlistitem, users);
         mFriendlist.setAdapter(FriendListAdapter);
+
+
 
     }
 

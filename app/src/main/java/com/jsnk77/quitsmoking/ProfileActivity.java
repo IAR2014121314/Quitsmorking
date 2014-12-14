@@ -1,8 +1,8 @@
 package com.jsnk77.quitsmoking;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +26,7 @@ import butterknife.OnClick;
 /**
  * Created by jsnk77 on 14/12/13.
  */
-public class ProfileActivity extends Activity {
+public class ProfileActivity extends ActionBarActivity {
 
     @InjectView(R.id.question1)
     TextView mQuestion1;
