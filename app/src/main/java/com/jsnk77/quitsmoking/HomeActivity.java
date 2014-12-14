@@ -106,6 +106,7 @@ public class HomeActivity extends ActionBarActivity {
 
 
         mUsername.setText(fbName);
+        mUsername.setText(fbNameFromProfile);
 
 
 
@@ -257,6 +258,7 @@ public class HomeActivity extends ActionBarActivity {
                         }
                     }
                 });
+                getData();
                 break;
         }
         return true;
