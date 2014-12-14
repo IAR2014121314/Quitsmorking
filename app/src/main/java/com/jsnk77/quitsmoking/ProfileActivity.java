@@ -97,7 +97,7 @@ public class ProfileActivity extends ActionBarActivity {
         } else*/ if (id == R.id.action_home) {
             //Toast.makeText(this, "Main Page selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.HomeActivity");
-            intent.putExtra("Name", nameToHome);
+            intent.putExtra("fbName", nameToHome);
             intent.putExtra("GoalTabacco", goalTabacco);
             startActivity(intent);
             finish();

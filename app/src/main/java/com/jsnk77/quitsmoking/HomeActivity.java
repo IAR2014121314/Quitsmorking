@@ -94,7 +94,7 @@ public class HomeActivity extends ActionBarActivity {
         fbId = intent.getStringExtra("fbId");
         fbId = "567407373393965";
         fbName = intent.getStringExtra("fbName");
-        fbNameFromProfile = intent.getStringExtra("Name");
+        //fbNameFromProfile = intent.getStringExtra("Name");
         goalTabaccoFromProfile = intent.getIntExtra("GoalTabacco", 0);
 
 
@@ -106,7 +106,6 @@ public class HomeActivity extends ActionBarActivity {
 
 
         mUsername.setText(fbName);
-        mUsername.setText(fbNameFromProfile);
 
 
 
@@ -267,7 +266,6 @@ public class HomeActivity extends ActionBarActivity {
 
     public void getData() {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
-        MobileServiceTable<Profile> profile = mClient.getTable(Profile.class);
 
         tabacco.where().field("FbId").eq(fbId).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
