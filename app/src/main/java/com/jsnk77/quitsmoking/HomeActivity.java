@@ -76,11 +76,11 @@ public class HomeActivity extends ActionBarActivity {
 
     int incrementNum = 0;
 
-    int goalTabaccoFromProfile;
+    private Intent intentFromProfile;
+    //private String fbIdFromProfile;
+    private int goalTabaccoFromProfile;
 
     ArrayList<FriendList> users;
-
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +94,8 @@ public class HomeActivity extends ActionBarActivity {
         intent = getIntent();
         fbId = intent.getStringExtra("fbId");
         fbName = intent.getStringExtra("fbName");
+        goalTabaccoFromProfile = intent.getIntExtra("GoalTabacco", 0);
+
 
 
         ImageLoader imageLoader = ApplicationControler.getInstance().getImageLoader();
@@ -276,7 +278,7 @@ public class HomeActivity extends ActionBarActivity {
                     @Override
                     public void run() {
 
-                        mTotalcount.setText("今までに吸ったタバコの総本数 : " + Integer.toString(finalTotal) + " 本");
+                        mTotalcount.setText("総タバコ数 : " + Integer.toString(finalTotal) + " 本");
                     }
                 });
             }
