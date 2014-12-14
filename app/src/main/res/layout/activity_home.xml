@@ -31,10 +31,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:phoneNumber="false"
-        android:layout_alignTop="@+id/usericon"
         android:gravity="center"
-        android:layout_toEndOf="@+id/imageButtonTabacco"
-        android:layout_alignStart="@+id/totalcount" />
+        android:layout_alignTop="@+id/usericon"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="140dp"
@@ -91,8 +90,8 @@
         android:id="@+id/imageButtonTabacco"
         android:background="#00FFFFFF"
         android:src="@drawable/cigar1"
-        android:layout_alignEnd="@+id/usericon"
-        android:layout_below="@+id/imageView" />
+        android:layout_below="@+id/imageView"
+        android:layout_alignEnd="@+id/usericon" />
 
     <TextView
         android:layout_width="70dp"

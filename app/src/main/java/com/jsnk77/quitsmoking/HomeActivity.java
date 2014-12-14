@@ -340,7 +340,6 @@ public class HomeActivity extends ActionBarActivity {
             FriendList item = this.getItem(position);
 
             holder.mFriendIcon.setImageDrawable(item.icon);
-
             holder.mFriendName.setText(item.friendListName);
             holder.mFriendTotalCount.setText(item.total_count);
 
