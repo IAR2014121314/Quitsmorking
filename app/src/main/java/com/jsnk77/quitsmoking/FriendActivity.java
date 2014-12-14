@@ -46,8 +46,6 @@ public class FriendActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend);
         ButterKnife.inject(this);
-        ButterKnife.inject(this);
-        ButterKnife.inject(this);
 
         mFriendName.setText("YUJI NAKANISHI");
         mFriendTotalCount.setText("xx");
