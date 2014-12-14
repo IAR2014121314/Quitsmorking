@@ -1,6 +1,7 @@
 package com.jsnk77.quitsmoking;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,10 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
-import com.microsoft.windowsazure.mobileservices.ServiceFilterResponse;
-import com.microsoft.windowsazure.mobileservices.TableOperationCallback;
-
-import java.net.MalformedURLException;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -40,6 +37,10 @@ public class FriendActivity extends Activity {
     @InjectView(R.id.friend_day_count)
     TextView mFriendDayCount;
 
+    Intent intent;
+
+    private String fbId;
+    private String fbName;
     private MobileServiceClient mClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +48,14 @@ public class FriendActivity extends Activity {
         setContentView(R.layout.activity_friend);
         ButterKnife.inject(this);
 
+        intent = getIntent();
+
         mFriendName.setText("YUJI NAKANISHI");
-        mFriendTotalCount.setText("xx");
-        mFriendDayCount.setText("xx");
+        mFriendTotalCount.setText("Total:20");
+        mFriendDayCount.setText("");
+
+       fbId = intent.getStringExtra("fbId");
+       fbName = intent.getStringExtra("fbName");
 
 
     }
@@ -57,7 +63,7 @@ public class FriendActivity extends Activity {
     //いいね
     @OnClick(R.id.m1_button)
     public void M1_Button() {
-        // TODO submit data to server...
+  /*      // TODO submit data to server...
         try {
             mClient = new MobileServiceClient(
                     "https://fb-messages.azure-mobile.net/",
@@ -84,12 +90,14 @@ public class FriendActivity extends Activity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        */
     }
 
     //がんばれ！
     @OnClick(R.id.m2_button)
     public void M2_Button() {
-        // TODO submit data to server...
+ /*       // TODO submit data to server...
         try {
             mClient = new MobileServiceClient(
                     "https://fb-messages.azure-mobile.net/",
@@ -116,12 +124,14 @@ public class FriendActivity extends Activity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        */
     }
 
     //ダメね。
     @OnClick(R.id.m3_button)
     public void M3_Button() {
-        // TODO submit data to server...
+  /*      // TODO submit data to server...
         try {
             mClient = new MobileServiceClient(
                     "https://fb-messages.azure-mobile.net/",
@@ -148,6 +158,8 @@ public class FriendActivity extends Activity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+   */
     }
 
     @Override
@@ -157,14 +169,42 @@ public class FriendActivity extends Activity {
         return true;
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
+            return true;
+        } else*/
+        if (id == R.id.action_home) {
+            //Toast.makeText(this, "Main Page selected", Toast.LENGTH_LONG).show();
+            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.HomeActivity");
+            //intent.putExtra("Goal", "");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
+            startActivity(intent);
+            finish();
+            return true;
+        } else if (id == R.id.action_profile) {
+            //Toast.makeText(this, "profile selected", Toast.LENGTH_LONG).show();
+            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.ProfileActivity");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
+            startActivity(intent);
+            finish();
+            return true;
+        } else if (id == R.id.action_message) {
+            //Toast.makeText(this, "facebook selected", Toast.LENGTH_LONG).show();
+            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.MessageActivity");
+            intent.putExtra("fbId",fbId);
+            intent.putExtra("fbName",fbName);
+            startActivity(intent);
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);

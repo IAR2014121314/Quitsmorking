@@ -208,12 +208,16 @@ public class HomeActivity extends ActionBarActivity {
             startActivity(intent);
             finish();
             return true;
-//        } else if (id == R.id.action_friend) {
-//            //Toast.makeText(this, "ranking selected", Toast.LENGTH_LONG).show();
-//            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.FriendActivity");
-//            startActivity(intent);
-//            finish();
-//            return true;
+       } else if (id == R.id.action_friend) {
+            //Toast.makeText(this, "ranking selected", Toast.LENGTH_LONG).show();
+            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.FriendActivity");
+            fbId = intent.getStringExtra("fbId");
+            fbName = intent.getStringExtra("fbName");
+            intent.putExtra("FbId", fbId);
+            intent.putExtra("fbName",fbName);
+            startActivity(intent);
+            finish();
+            return true;
         } else if (id == R.id.action_message) {
             //Toast.makeText(this, "facebook selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.MessageActivity");
