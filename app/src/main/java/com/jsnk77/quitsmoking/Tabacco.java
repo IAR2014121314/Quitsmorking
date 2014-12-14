@@ -9,4 +9,5 @@ public class Tabacco {
     public String Longitude;
     public int SmokeCount;
     public String FbId;
+    public String DateToday;
 }
