@@ -65,6 +65,16 @@ public class MessageActivity extends ActionBarActivity {
         u4.Message = "がんばれ！";
         users.add(u4);
 
+        MessageListItem u5 = new MessageListItem();
+        u5.fromfriendname = ("とーま"+ s );
+        u5.Message = "いいね！";
+        users.add(u5);
+
+        MessageListItem u6 = new MessageListItem();
+        u6.fromfriendname = ("じゅんき" + s );
+        u6.Message = "がんばれ！";
+        users.add(u6);
+
         //set ListAdapter
         MessageListAdapter messageListAdapter = new MessageListAdapter(this, R.layout.activity_messagelistitem, users);
         mListView.setAdapter(messageListAdapter);
