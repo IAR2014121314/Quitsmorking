@@ -40,6 +40,7 @@ import butterknife.OnTouch;
  */
 public class HomeActivity extends Activity {
 
+
     private MobileServiceClient mClient;
 
     @InjectView(R.id.usericon)
