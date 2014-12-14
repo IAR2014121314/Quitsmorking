@@ -76,11 +76,11 @@ public class HomeActivity extends ActionBarActivity {
 
     int incrementNum = 0;
 
-    int goalTabaccoFromProfile;
+    private Intent intentFromProfile;
+    //private String fbIdFromProfile;
+    private int goalTabaccoFromProfile;
 
     ArrayList<FriendList> users;
-
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,12 +88,14 @@ public class HomeActivity extends ActionBarActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.inject(this);
 
-        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_LONG).show();
+        Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_SHORT).show();
 
 
         intent = getIntent();
         fbId = intent.getStringExtra("fbId");
         fbName = intent.getStringExtra("fbName");
+        goalTabaccoFromProfile = intent.getIntExtra("GoalTabacco", 0);
+
 
 
         ImageLoader imageLoader = ApplicationControler.getInstance().getImageLoader();
@@ -126,12 +128,12 @@ public class HomeActivity extends ActionBarActivity {
         users = new ArrayList<FriendList>();
 
         FriendList u1 = new FriendList();
-        u1.name = "YUJI";
+        u1.friendListName = "YUJI";
         u1.total_count = "20";
         users.add(u1);
 
         FriendList u2 = new FriendList();
-        u2.name = "Haru";
+        u2.friendListName = "Haru";
         u2.total_count = "21";
         users.add(u2);
 
@@ -246,11 +248,11 @@ public class HomeActivity extends ActionBarActivity {
                     public void onCompleted(Tabacco entity, Exception exception, ServiceFilterResponse response) {
                         if (exception == null) {
                             // Insert succeeded
-                            Toast.makeText(HomeActivity.this, "Succeeded!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(HomeActivity.this, "たばこを1本吸ってしまいました…", Toast.LENGTH_SHORT).show();
                             getData();
                         } else {
                             // Insert failed
-                            Toast.makeText(HomeActivity.this, "Failed!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(HomeActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -276,7 +278,7 @@ public class HomeActivity extends ActionBarActivity {
                     @Override
                     public void run() {
 
-                        mTotalcount.setText("今までに吸ったタバコの総本数 : " + Integer.toString(finalTotal) + " 本");
+                        mTotalcount.setText("総タバコ数 : " + Integer.toString(finalTotal) + " 本");
                     }
                 });
             }

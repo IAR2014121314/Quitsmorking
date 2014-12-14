@@ -68,9 +68,9 @@
         android:layout_height="wrap_content"
         android:text="登録"
         android:id="@+id/button"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="45dp"
         android:layout_below="@+id/textView13"
-        android:layout_toEndOf="@+id/textView12" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,7 +112,8 @@
         android:layout_marginTop="49dp"
         android:width="300dp"
         android:height="50dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_alignEnd="@+id/question3" />
 
     <TextView
         android:layout_width="wrap_content"
