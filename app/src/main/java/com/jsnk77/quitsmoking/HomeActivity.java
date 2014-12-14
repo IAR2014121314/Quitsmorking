@@ -80,6 +80,9 @@ public class HomeActivity extends Activity {
 
     ArrayList<FriendList> users;
 
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -97,7 +100,11 @@ public class HomeActivity extends Activity {
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(mUsericon, R.drawable.ic_launcher, R.drawable.ic_launcher);
         imageLoader.get("https://graph.facebook.com/" + fbId + "/picture", imageListener);
 
+
+
         mUsername.setText(fbName);
+
+
 
         try {
             mClient = new MobileServiceClient(
@@ -134,6 +141,13 @@ public class HomeActivity extends Activity {
 
     }
 
+    @OnClick(R.id.shareOnFacebook)
+    public void shareOnFacebook() {
+        Intent intent = new Intent(HomeActivity.this, ShareActivity.class);
+        startActivity(intent);
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -141,11 +155,6 @@ public class HomeActivity extends Activity {
         return true;
     }
 
-    @OnClick(R.id.shareOnFacebook)
-    public void shareOnFacebook() {
-        Intent intent = new Intent(HomeActivity.this, ShareActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -321,8 +330,10 @@ public class HomeActivity extends Activity {
             }
 
             FriendList item = this.getItem(position);
-//            holder.mIcon.setImageDrawable(item.icon);
-            holder.mFriendName.setText(item.name);
+
+            holder.mFriendIcon.setImageDrawable(item.icon);
+
+            holder.mFriendName.setText(item.friendListName);
             holder.mFriendTotalCount.setText(item.total_count);
 
             // etc...
@@ -331,12 +342,11 @@ public class HomeActivity extends Activity {
         }
 
         static class ViewHolder {
-            @InjectView(R.id.friend_image)
-            ImageView mFriendImage;
-
-            @InjectView(R.id.friend_name)
+           @InjectView(R.id.friendicon)
+            ImageView mFriendIcon;
+            @InjectView(R.id.friendname)
             TextView mFriendName;
-            @InjectView(R.id.friend_total_count)
+            @InjectView(R.id.friendTotalCount)
             TextView mFriendTotalCount;
 
             ViewHolder(View view) {
