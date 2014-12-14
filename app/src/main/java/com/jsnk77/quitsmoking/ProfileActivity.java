@@ -149,7 +149,7 @@ public class ProfileActivity extends ActionBarActivity {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
         MobileServiceTable<User> user = mClient.getTable(User.class);
 
-        tabacco.where().field("FbId").eq(fbidFromHome).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().field("Text").eq("すばらしいアイテム").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int total = 0;
@@ -166,7 +166,7 @@ public class ProfileActivity extends ActionBarActivity {
             }
         });
 
-        tabacco.where().day("_createdAt").eq(13).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().day("DateToday").eq("2014-12-14").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int totalToday = 0;

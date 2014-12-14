@@ -253,6 +253,7 @@ public class HomeActivity extends ActionBarActivity {
                 incrementNum++;
                 tabacco.SmokeCount = incrementNum;
                 tabacco.DateToday = today;
+                tabacco.Text = "すばらしいアイテム";
 
                 mClient.getTable(Tabacco.class).insert(tabacco, new TableOperationCallback<Tabacco>() {
                     public void onCompleted(Tabacco entity, Exception exception, ServiceFilterResponse response) {
@@ -275,7 +276,7 @@ public class HomeActivity extends ActionBarActivity {
     public void getData() {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
 
-        tabacco.where().field("FbId").eq(fbId).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().field("Text").eq("すばらしいアイテム").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int total = 0;

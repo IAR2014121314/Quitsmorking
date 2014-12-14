@@ -10,4 +10,6 @@ public class Tabacco {
     public int SmokeCount;
     public String FbId;
     public String DateToday;
+    public String Text;
+
 }
