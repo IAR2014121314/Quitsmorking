@@ -251,16 +251,15 @@ public class HomeActivity extends ActionBarActivity {
                         if (exception == null) {
                             // Insert succeeded
                             Toast.makeText(HomeActivity.this, "たばこを1本吸ってしまいました…", Toast.LENGTH_SHORT).show();
-                            getData();
                         } else {
                             // Insert failed
                             Toast.makeText(HomeActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-                getData();
                 break;
         }
+        getData();
         return true;
     }
 
