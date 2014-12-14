@@ -26,6 +26,7 @@ import com.microsoft.windowsazure.mobileservices.TableOperationCallback;
 import com.microsoft.windowsazure.mobileservices.TableQueryCallback;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -78,6 +79,9 @@ public class HomeActivity extends ActionBarActivity {
     private int goalTabaccoFromProfile;
 
     int incrementNum = 0;
+
+    Calendar calendar;
+    String today;
 
     ArrayList<FriendList> users;
 
@@ -142,7 +146,10 @@ public class HomeActivity extends ActionBarActivity {
         FriendListAdapter FriendListAdapter = new FriendListAdapter(this, R.layout.activity_friendlistitem, users);
         mFriendlist.setAdapter(FriendListAdapter);
 
-        getData();
+        calendar = Calendar.getInstance();
+        today = calendar.get(Calendar.YEAR)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+calendar.get(Calendar.DAY_OF_MONTH);
+
+        this.getData();
 
     }
 
@@ -245,12 +252,15 @@ public class HomeActivity extends ActionBarActivity {
                 tabacco.Longitude = "";
                 incrementNum++;
                 tabacco.SmokeCount = incrementNum;
+                tabacco.DateToday = today;
 
                 mClient.getTable(Tabacco.class).insert(tabacco, new TableOperationCallback<Tabacco>() {
                     public void onCompleted(Tabacco entity, Exception exception, ServiceFilterResponse response) {
                         if (exception == null) {
                             // Insert succeeded
+                            incrementNum = 0;
                             Toast.makeText(HomeActivity.this, "たばこを1本吸ってしまいました…", Toast.LENGTH_SHORT).show();
+                            getData();
                         } else {
                             // Insert failed
                             Toast.makeText(HomeActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
@@ -259,14 +269,13 @@ public class HomeActivity extends ActionBarActivity {
                 });
                 break;
         }
-        getData();
         return true;
     }
 
     public void getData() {
         MobileServiceTable<Tabacco> tabacco = mClient.getTable(Tabacco.class);
 
-        tabacco.where().field("FbId").eq(fbId).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().field("FbId").eq("fbId").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int total = 0;
@@ -284,7 +293,7 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
 
-        tabacco.where().day("_createdAt").eq(14).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().field("DateToday").eq("today").select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int totalToday = 0;
