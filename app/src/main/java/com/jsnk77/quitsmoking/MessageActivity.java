@@ -31,12 +31,16 @@ public class MessageActivity extends ActionBarActivity {
     @InjectView(R.id.listView)
     ListView mListView;
     ArrayList<MessageListItem> users;
+    Intent intent;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         ButterKnife.inject(this);
 
+
+        intent = getIntent();
+        String fbId = "567407373393965";
 
         //ListView setup
         users = new ArrayList<MessageListItem>();

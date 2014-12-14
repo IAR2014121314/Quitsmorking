@@ -187,12 +187,12 @@ public class HomeActivity extends ActionBarActivity {
             startActivity(intent);
             finish();
             return true;
-        } else if (id == R.id.action_friend) {
-            //Toast.makeText(this, "ranking selected", Toast.LENGTH_LONG).show();
-            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.FriendActivity");
-            startActivity(intent);
-            finish();
-            return true;
+//        } else if (id == R.id.action_friend) {
+//            //Toast.makeText(this, "ranking selected", Toast.LENGTH_LONG).show();
+//            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.FriendActivity");
+//            startActivity(intent);
+//            finish();
+//            return true;
         } else if (id == R.id.action_message) {
             //Toast.makeText(this, "facebook selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.MessageActivity");
@@ -278,7 +278,6 @@ public class HomeActivity extends ActionBarActivity {
                 HomeActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         mTotalcount.setText("総タバコ数 : " + Integer.toString(finalTotal) + " 本");
                     }
                 });
@@ -305,7 +304,7 @@ public class HomeActivity extends ActionBarActivity {
     //Friends list onclick event.
     @OnItemClick(R.id.friendlist)
     public void friendClick(int position) {
-        User user = (User) mFriendlist.getItemAtPosition(position);
+        FriendList user = (FriendList) mFriendlist.getItemAtPosition(position);
         Intent intent = new Intent(this, FriendActivity.class);
         startActivity(intent);
         Toast.makeText(this, user.name, Toast.LENGTH_SHORT).show();

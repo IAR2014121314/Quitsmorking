@@ -108,12 +108,12 @@ public class ProfileActivity extends ActionBarActivity {
             startActivity(intent);
             finish();
             return true;
-        } else if (id == R.id.action_friend) {
-            //Toast.makeText(this, "ranking selected", Toast.LENGTH_LONG).show();
-            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.FriendActivity");
-            startActivity(intent);
-            finish();
-            return true;
+//        } else if (id == R.id.action_friend) {
+//            //Toast.makeText(this, "ranking selected", Toast.LENGTH_LONG).show();
+//            intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.FriendActivity");
+//            startActivity(intent);
+//            finish();
+//            return true;
         } else if (id == R.id.action_message) {
             //Toast.makeText(this, "facebook selected", Toast.LENGTH_LONG).show();
             intent.setClassName("com.jsnk77.quitsmoking", "com.jsnk77.quitsmoking.MessageActivity");

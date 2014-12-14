@@ -6,8 +6,8 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_profile" android:title="Profile"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_friend" android:title="Friends"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <!--<item android:id="@+id/action_friend" android:title="Friends"-->
+        <!--android:orderInCategory="100" app:showAsAction="never" />-->
     <item android:id="@+id/action_message" android:title="Message"
         android:orderInCategory="100" app:showAsAction="never" />
 
