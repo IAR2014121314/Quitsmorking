@@ -66,6 +66,7 @@ public class HomeActivity extends ActionBarActivity {
     private Intent intent;
     private String fbId;
     private String fbName;
+    private String fbNameFromProfile;
 
     private int targetLocalX;
     private int targetLocalY;
@@ -91,10 +92,12 @@ public class HomeActivity extends ActionBarActivity {
 
         intent = getIntent();
         fbId = intent.getStringExtra("fbId");
+        fbId = "567407373393965";
         fbName = intent.getStringExtra("fbName");
+        fbNameFromProfile = intent.getStringExtra("Name");
         goalTabaccoFromProfile = intent.getIntExtra("GoalTabacco", 0);
 
-        fbId = "567407373393965";
+
 
         ImageLoader imageLoader = ApplicationControler.getInstance().getImageLoader();
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(mUsericon, R.drawable.ic_launcher, R.drawable.ic_launcher);
@@ -139,7 +142,7 @@ public class HomeActivity extends ActionBarActivity {
         FriendListAdapter FriendListAdapter = new FriendListAdapter(this, R.layout.activity_friendlistitem, users);
         mFriendlist.setAdapter(FriendListAdapter);
 
-
+        getData();
 
     }
 
@@ -282,7 +285,7 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
 
-        tabacco.where().day("_createdAt").eq(13).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
+        tabacco.where().day("_createdAt").eq(14).select("SmokeCount").execute(new TableQueryCallback<Tabacco>() {
             @Override
             public void onCompleted(List<Tabacco> result, int count, Exception exception, ServiceFilterResponse response) {
                 int totalToday = 0;
