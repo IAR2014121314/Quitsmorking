@@ -42,6 +42,8 @@ import butterknife.OnTouch;
 public class HomeActivity extends ActionBarActivity {
 
 
+    @InjectView(R.id.imageView3)
+    ImageView mImageView3;
     private MobileServiceClient mClient;
 
     @InjectView(R.id.usericon)
@@ -75,7 +77,7 @@ public class HomeActivity extends ActionBarActivity {
     private int screenY;
     private int defLeft;
     private int defTop;
-
+    private int totaltodayhosisu;
     private int goalTabaccoFromProfile;
 
     int incrementNum = 0;
@@ -90,6 +92,7 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.inject(this);
+        ButterKnife.inject(this);
 
         Toast.makeText(HomeActivity.this, "ホームへようこそ", Toast.LENGTH_SHORT).show();
 
@@ -102,15 +105,12 @@ public class HomeActivity extends ActionBarActivity {
         goalTabaccoFromProfile = intent.getIntExtra("GoalTabacco", 0);
 
 
-
         ImageLoader imageLoader = ApplicationControler.getInstance().getImageLoader();
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(mUsericon, R.drawable.ic_launcher, R.drawable.ic_launcher);
         imageLoader.get("https://graph.facebook.com/" + fbId + "/picture", imageListener);
 
 
-
         mUsername.setText(fbName);
-
 
 
         try {
@@ -147,9 +147,18 @@ public class HomeActivity extends ActionBarActivity {
         mFriendlist.setAdapter(FriendListAdapter);
 
         calendar = Calendar.getInstance();
-        today = calendar.get(Calendar.YEAR)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+calendar.get(Calendar.DAY_OF_MONTH);
+        today = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
 
         this.getData();
+
+        int a = 4;
+        if (totaltodayhosisu < a) {
+            mImageView.setVisibility(View.VISIBLE);
+            mImageView3.setVisibility(View.INVISIBLE);
+        } else {
+            mImageView3.setVisibility(View.VISIBLE);
+            mImageView.setVisibility(View.INVISIBLE);
+        }
 
     }
 
@@ -301,6 +310,7 @@ public class HomeActivity extends ActionBarActivity {
                     totalToday += i.SmokeCount;
                 }
                 final int finalTotalToday = totalToday;
+                totaltodayhosisu = totalToday;
                 HomeActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -310,6 +320,7 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
     }
+
     //Friends list onclick event.
     @OnItemClick(R.id.friendlist)
     public void friendClick(int position) {
@@ -354,7 +365,7 @@ public class HomeActivity extends ActionBarActivity {
         }
 
         static class ViewHolder {
-           @InjectView(R.id.friendicon)
+            @InjectView(R.id.friendicon)
             ImageView mFriendIcon;
             @InjectView(R.id.friendname)
             TextView mFriendName;
