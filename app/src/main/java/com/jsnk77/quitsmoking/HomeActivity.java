@@ -120,19 +120,19 @@ public class HomeActivity extends Activity {
         //ListView setup
         users = new ArrayList<FriendList>();
 
-        User u1 = new User();
-
-        u1.friendname = "YUJI";
-        u1.cigarCount = "20";
+        FriendList u1 = new FriendList();
+        u1.name = "YUJI";
+        u1.total_count = "20";
         users.add(u1);
-        User u2 = new User();
+
+        FriendList u2 = new FriendList();
         u2.name = "Haru";
-        u2.cigarCount = "21";
+        u2.total_count = "21";
         users.add(u2);
 
         //set ListAdapter
-        FriendListAdapter testListAdapter = new FriendListAdapter(this, R.layout.activity_friendlistitem, users);
-        mFriendlist.setAdapter(testListAdapter);
+        FriendListAdapter FriendListAdapter = new FriendListAdapter(this, R.layout.activity_friendlistitem, users);
+        mFriendlist.setAdapter(FriendListAdapter);
 
     }
 
@@ -300,12 +300,12 @@ public class HomeActivity extends Activity {
 
     }
 
-    public static class FriendListAdapter extends ArrayAdapter<User> {
+    public static class FriendListAdapter extends ArrayAdapter<FriendList> {
 
         Context mContext;
         int mResource;
 
-        public FriendListAdapter(Context context, int resource, List<User> objects) {
+        public FriendListAdapter(Context context, int resource, List<FriendList> objects) {
             super(context, resource, objects);
             this.mContext = context;
             this.mResource = resource;
@@ -322,10 +322,10 @@ public class HomeActivity extends Activity {
                 convertView.setTag(holder);
             }
 
-            User item = this.getItem(position);
+            FriendList item = this.getItem(position);
 //            holder.mIcon.setImageDrawable(item.icon);
-            holder.mFriendName.setText(item.friend_name);
-            holder.mFriendTotalCount.setText(item.friend_tatal_count);
+            holder.mFriendName.setText(item.name);
+            holder.mFriendTotalCount.setText(item.total_count);
 
             // etc...
 

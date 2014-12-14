@@ -7,4 +7,6 @@ public class FriendList {
     public String id;
     public String myfbid;
     public String friendsfbid;
+    public String name;
+    public String total_count;
 }

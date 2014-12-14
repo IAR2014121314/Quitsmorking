@@ -11,7 +11,8 @@ public class  User {
     public String gender;
     public String fbId;
 
-public User(){
+
+    public User(){
         this.id = id;
         this.age=age;
         this.name=name;
